@@ -50,7 +50,7 @@ func TestKubeprobes(t *testing.T) {
 		},
 	}
 
-	kp := NewKubeprobes(
+	kp := New(
 		WithLivenessProbes(live.GetProbeFunction()),
 		WithReadinessProbes(ready.GetProbeFunction()),
 	)

@@ -31,10 +31,10 @@ func (kp *kubeprobes) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-type kubeprobesOption func(*kubeprobes)
+type option func(*kubeprobes)
 
-// NewKubeprobes returns a new instance of a Kubernetes probes
-func NewKubeprobes(options ...kubeprobesOption) *kubeprobes {
+// New returns a new instance of a Kubernetes probes
+func New(options ...option) *kubeprobes {
 	kp := &kubeprobes{
 		livenessProbes:  []ProbeFunction{},
 		readinessProbes: []ProbeFunction{},
@@ -48,14 +48,14 @@ func NewKubeprobes(options ...kubeprobesOption) *kubeprobes {
 }
 
 // WithLivenessProbes adds given liveness probes to the set of probes
-func WithLivenessProbes(probes ...ProbeFunction) kubeprobesOption {
+func WithLivenessProbes(probes ...ProbeFunction) option {
 	return func(kp *kubeprobes) {
 		kp.livenessProbes = append(kp.livenessProbes, probes...)
 	}
 }
 
 // WithReadinessProbes adds given readiness probes to the set of probes
-func WithReadinessProbes(probes ...ProbeFunction) kubeprobesOption {
+func WithReadinessProbes(probes ...ProbeFunction) option {
 	return func(kp *kubeprobes) {
 		kp.readinessProbes = append(kp.readinessProbes, probes...)
 	}

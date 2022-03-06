@@ -16,7 +16,7 @@ go get -u github.com/Icikowski/kubeprobes
 
 ## Usage
 
-The package provides `kubeprobes.NewKubeprobes` function which returns a probes handler compliant with `http.Handler` interface. 
+The package provides `kubeprobes.New` function which returns a probes handler compliant with `http.Handler` interface. 
 
 The handler serves two endpoints, which are used to implement liveness and readiness probes by returning either `200` (healthy) or `503` (unhealthy) status: 
 
@@ -25,7 +25,7 @@ The handler serves two endpoints, which are used to implement liveness and readi
 
 Accessing any other endpoint will return `404` status. In order to provide maximum performance, no body is ever returned.
 
-The `kubeprobes.NewKubeprobes` function accepts following options-applying functions as arguments:
+The `kubeprobes.New` function accepts following options-applying functions as arguments:
 
 - `kubeprobes.WithLivenessProbes(/* ... */)` - adds particular [probes](#probes) to the list of liveness probes;
 - `kubeprobes.WithReadinessProbes(/* ... */)` - adds particular [probes](#probes) to the list of readiness probes.
@@ -53,7 +53,7 @@ someOtherProbe := func() error {
 } 
 
 // Use functions in probes handler
-kp := kubeprobes.NewKubeprobes(
+kp := kubeprobes.New(
     kubeprobes.WithLivenessProbes(someOtherProbe),
     kubeprobes.WithReadinessProbes(someProbe),
 )
@@ -69,7 +69,7 @@ someProbe := kubeprobes.NewStatefulProbe()
 someOtherProbe := kubeprobes.NewStatefulProbe()
 
 // Use it in probes handler
-kp := kubeprobes.NewKubeprobes(
+kp := kubeprobes.New(
     kubeprobes.WithLivenessProbes(someProbe.GetProbeFunction()),
     kubeprobes.WithReadinessProbes(someOtherProbe.GetProbeFunction()),
 )
@@ -83,7 +83,7 @@ live := kubeprobes.NewStatefulProbe()
 ready := kubeprobes.NewStatefulProbe()
 
 // Prepare handler
-kp := kubeprobes.NewKubeprobes(
+kp := kubeprobes.New(
     kubeprobes.WithLivenessProbes(live.GetProbeFunction()),
     kubeprobes.WithReadinessProbes(ready.GetProbeFunction()),
 )
