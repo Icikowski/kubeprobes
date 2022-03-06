@@ -25,7 +25,7 @@ The handler serves two endpoints, which are used to implement liveness and readi
 
 Accessing any other endpoint will return `404` status. In order to provide maximum performance, no body is ever returned.
 
-The `kubeprobes.NewKubeprobes` accepts following `KubeprobesOption` functions as arguments:
+The `kubeprobes.NewKubeprobes` function accepts following options-applying functions as arguments:
 
 - `kubeprobes.WithLivenessProbes(/* ... */)` - adds particular [probes](#probes) to the list of liveness probes;
 - `kubeprobes.WithReadinessProbes(/* ... */)` - adds particular [probes](#probes) to the list of readiness probes.
