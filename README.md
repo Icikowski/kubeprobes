@@ -2,6 +2,11 @@
 
 Simple and effective package for implementing [Kubernetes liveness and readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)' handler.
 
+![Go version](https://img.shields.io/github/go-mod/go-version/Icikowski/kubeprobes)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Icikowski/kubeprobes)](https://goreportcard.com/report/github.com/Icikowski/kubeprobes)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Icikowski/kubeprobes.svg)](https://pkg.go.dev/github.com/Icikowski/kubeprobes)
+![License](https://img.shields.io/github/license/Icikowski/kubeprobes)
+
 ## Installation
 
 ```bash
