@@ -3,11 +3,11 @@ package kubeprobes
 import "testing"
 
 var (
-	markAsDown func(*testing.T, *statefulProbe) = func(t *testing.T, sp *statefulProbe) {
+	markAsDown func(*testing.T, *StatefulProbe) = func(t *testing.T, sp *StatefulProbe) {
 		t.Helper()
 		sp.MarkAsDown()
 	}
-	markAsUp func(*testing.T, *statefulProbe) = func(t *testing.T, sp *statefulProbe) {
+	markAsUp func(*testing.T, *StatefulProbe) = func(t *testing.T, sp *StatefulProbe) {
 		t.Helper()
 		sp.MarkAsUp()
 	}
@@ -15,7 +15,7 @@ var (
 
 func TestStatefulProbe(t *testing.T) {
 	tests := map[string]struct {
-		probeTransformation func(*testing.T, *statefulProbe)
+		probeTransformation func(*testing.T, *StatefulProbe)
 		expectedError       bool
 	}{
 		"mark as up": {

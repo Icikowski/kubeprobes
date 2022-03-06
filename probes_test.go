@@ -19,8 +19,8 @@ func TestKubeprobes(t *testing.T) {
 	live, ready := NewStatefulProbe(), NewStatefulProbe()
 
 	tests := map[string]struct {
-		livenessProbeTransformation  func(*testing.T, *statefulProbe)
-		readinessProbeTransformation func(*testing.T, *statefulProbe)
+		livenessProbeTransformation  func(*testing.T, *StatefulProbe)
+		readinessProbeTransformation func(*testing.T, *StatefulProbe)
 		expectedLiveStatus           int
 		expectedReadyStatus          int
 	}{
